@@ -1,0 +1,31 @@
+---
+- name: Check for oh-my-zsh installation
+  stat:
+    path: "{{ home_dir }}/.oh-my-zsh/"
+  register: oh_my_zsh_dir
+
+- name: Install oh-my-zsh
+  when: not oh_my_zsh_dir.stat.exists
+  raw: "sh -c \"$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)\""
+
+- name: Check for .zshrc
+  stat: path="{{ home_dir }}/.zshrc"
+  register: zshrc
+
+- name: Back up .zshrc
+  when: zshrc.stat.exists
+  copy:
+    src: "{{ home_dir }}/.zshrc"
+    dest: "{{ home_dir }}/.zshrc.bak"
+
+- name: Remove .zshrc
+  file: 
+    state: absent
+    creates: "{{ home_dir }}/.zshrc.bak"
+  when: zshrc.stat.exists
+
+- name: Symlink .zshrc
+  file:
+    src: "{{ role_path }}/files/zshrc"
+    dest: "{{ home_dir }}/.zshrc"
+    state: link
