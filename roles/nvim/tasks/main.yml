@@ -1,0 +1,91 @@
+---
+# Attempt to install nvim
+# TODO: implement, use e.g.
+#   - include_tasks: setup-Archlinux.yml
+#     when: ansible_os_family == 'Archlinux'
+
+# TODO: correct config installation directory should be selected based on OS and set by installer subtask
+- name: Create config directory
+  file:
+    path: "{{ home_dir }}/.config/nvim"
+    state: directory
+    recurse: yes
+  register: nvim_config_dir
+
+- name: Create theme directory
+  file:
+    path: "{{ home_dir }}/.config/nvim/colors"
+    state: directory
+  register: nvim_colors_dir
+
+# Install init.vim
+- name: Check for existing init.vim file.
+  stat:
+    path: "{{ nvim_config_dir.path }}/init.vim"
+  register: init_vim
+
+- name: Back up existing init.vim file.
+  when: init_vim.stat.exists
+  copy:
+    src: "{{ nvim_config_dir.path }}/init.vim"
+    dest: "{{ nvim_config_dir.path }}/init.vim.bak"
+
+- name: Remove existing init.vim file.
+  when: init_vim.stat.exists
+  file:
+    state: absent
+    path: "{{ nvim_config_dir.path }}/init.vim"
+
+- name: Symlink master init.vim file to the nvim config directory.
+  file:
+    src: "{{ role_path }}/files/init.vim"
+    dest: "{{ nvim_config_dir.path }}/init.vim"
+    state: link
+
+# Install coc-settings.json
+- name: Check for existing coc-settings.json file.
+  stat:
+    path: "{{ nvim_config_dir.path }}/coc-settings.json"
+  register: coc_settings_json
+
+- name: Back up existing coc-settings.json file.
+  when: coc_settings_json.stat.exists
+  copy:
+    src: "{{ nvim_config_dir.path }}/coc-settings.json"
+    dest: "{{ nvim_config_dir.path }}/coc-settings.json.bak"
+
+- name: Remove existing coc-settings.json file.
+  when: coc_settings_json.stat.exists
+  file:
+    state: absent
+    path: "{{ nvim_config_dir.path }}/coc-settings.json"
+
+- name: Symlink master coc-settings.json file to the nvim config directory.
+  file:
+    src: "{{ role_path }}/files/coc-settings.json"
+    dest: "{{ nvim_config_dir.path }}/coc-settings.json"
+    state: link
+
+# Install our custom color theme
+- name: Check for existing malwrar.vim file.
+  stat:
+    path: "{{ nvim_colors_dir.path }}/malwrar.vim"
+  register: malwrar_vim
+
+- name: Back up existing malwrar.vim file.
+  when: malwrar_vim.stat.exists
+  copy:
+    src: "{{ nvim_config_dir.path }}/malwrar.vim"
+    dest: "{{ nvim_config_dir.path }}/malwrar.vim.bak"
+
+- name: Remove existing malwrar.vim file.
+  when: malwrar_vim.stat.exists
+  file:
+    state: absent
+    path: "{{ nvim_config_dir.path }}/malwrar.vim"
+
+- name: Symlink master malwrar.vim file to the nvim config directory.
+  file:
+    src: "{{ role_path }}/templates/malwrar.vim"
+    dest: "{{ nvim_config_dir.path }}/malwrar.vim"
+    state: link
