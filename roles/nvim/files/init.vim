@@ -54,6 +54,7 @@ cmap w!! w !sudo tee % >/dev/null
 
 " Make space the leader key
 let mapleader=" "
+let maplocalleader=" "
 nnoremap <SPACE> <Nop>
 
 " Make arrow keys adjust split sizes
@@ -236,6 +237,7 @@ let g:airline_section_y = ""
 
 
 """ Vimtex
+" List of default mappings: https://github.com/lervag/vimtex/wiki/usage#default-mappings
 set conceallevel=1
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
