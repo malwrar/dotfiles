@@ -1,1 +1,53 @@
 home_dir: "{{ '~' | expanduser }}"
+colors:
+  black:
+    rgb: "#101010"
+    num: 8
+  dark_grey:
+    rgb: "#232323"
+    num: 0
+  light_grey:
+    rgb: "#434240"
+    num: 7
+  white:
+    rgb: "#b3b8b4"
+    num: 15
+  red:
+    rgb: "#9b9773"
+    num: 9
+  dark_red:
+    rgb: "#323027"
+    num: 1
+  green:
+    rgb: "#b2b08c"
+    num: 10
+  dark_green:
+    rgb: "#3d4339"
+    num: 2
+  yellow:
+    rgb: "#c4bb8c"
+    num: 11
+  dark_yellow:
+    rgb: "#443b2c"
+    num: 3
+  blue:
+    rgb: "#c4b67a"
+    num: 12
+  dark_blue:
+    rgb: "#534d35"
+    num: 4
+  magenta:
+    rgb: "#cfc995"
+    num: 13
+  dark_magenta:
+    rgb: "#646756"
+    num: 5
+  cyan:
+    rgb: "#d3d4b6"
+    num: 14
+  dark_cyan:
+    rgb: "#7b8574"
+    num: 6
+  extra:
+    rgb: "#35211b"
+    num: 16

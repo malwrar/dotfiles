@@ -1,0 +1,115 @@
+!!!! SET COLORS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+! Main
+*.foreground: {{ colors.white.rgb }}
+*.background: {{ colors.black.rgb }}
+*.cursor: {{ colors.white.rgb }}
+
+! black
+*.color0 : {{ colors.black.rgb }}
+*.color8 : {{ colors.dark_grey.rgb }}
+
+! red
+*.color1 : {{ colors.dark_red.rgb }}
+*.color9 : {{ colors.red.rgb }}
+
+! green
+*.color2 : {{ colors.dark_green.rgb }}
+*.color10: {{ colors.green.rgb }}
+
+! yellow
+*.color3 : {{ colors.dark_yellow.rgb }}
+*.color11: {{ colors.yellow.rgb }}
+
+! blue
+*.color4 : {{ colors.dark_blue.rgb }}
+*.color12: {{ colors.blue.rgb }}
+
+! magenta
+*.color5 : {{ colors.dark_magenta.rgb }}
+*.color13: {{ colors.magenta.rgb }}
+
+! cyan
+*.color6 : {{ colors.dark_cyan.rgb }}
+*.color14: {{ colors.cyan.rgb }}
+
+! white
+*.color7 : {{ colors.white.rgb }}
+*.color15: {{ colors.light_grey.rgb }}
+
+! extra
+*.color16: {{ colors.extra.rgb }}
+
+
+!!!! UNSORTED !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!
+! Xft settings
+!Xft.dpi:                    276
+!Xft.dpi:                    96
+Xft.dpi:                    192
+Xft.autohint:               0
+Xft.lcdfilter:              lcddefault
+Xft.hintstyle:              hintfull
+Xft.hinting:                true
+Xft.antialias:              true
+Xft.rgba:                   rgb
+
+URxvt.depth:                32
+!URxvt.geometry:             90x30
+URxvt.transparent:          false
+URxvt.fading:               0
+URxvt.urgentOnBell:         true
+!URxvt.visualBell:           true
+URxvt.loginShell:           true
+URxvt.saveLines:            65535
+!URxvt.internalBorder:       3
+!URxvt.lineSpace:            0
+
+! Fonts
+!URxvt*font: xft:Inconsolata for Powerline:pixelsize=20:antialias=true
+
+!URxvt*imFont: xft:Inconsolata for Powerline:regular:pixelsize=16:antialias=true:hinting:true
+!URxvt*boldFont: xft:Inconsolata for Powerline:bold:pixelsize=16:antialias=true:hinting:true
+!URxvt*italicFont: xft:Inconsolata for Powerline:italic:pixelsize=16:antialias=true:hinting:true
+!URxvt*boldItalicFont: xft:Inconsolata for Powerline:bold:italic:pixelsize=16:antialias=true:hinting:true
+
+! Fix font space
+!URxvt*letterSpace: -2
+
+! Scrollbar
+!URxvt.scrollStyle:          rxvt
+URxvt.scrollBar:            false
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt.scrollWithBuffer: true
+! scroll back to the bottom on keypress
+URxvt.scrollTtyKeypress: true
+
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 1
+URxvt.secondaryWheel: 1
+
+! Cursor
+URxvt.cursorBlink:          true
+URxvt.cursorColor:          #657b83
+URxvt.cursorUnderline:      false
+
+! Pointer
+!URxvt.pointerBlank:         true
+
+
+! Color
+URxvt.intensityStyles: false
+! Solarized color scheme for the X Window System
+! Source: https://github.com/solarized/xresources
+! Common
+
+
+! extensions
+URxvt.perl-lib:             ~/.urxvt/extensions/urxvt-perls
+URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select,font-size,matcher
+URxvt.url-launcher:         /usr/bin/firefox
+URxvt.url-select.launcher:  /usr/bin/firefox
+URxvt.url-select.underline: true
+URxvt.matcher.button:       1
