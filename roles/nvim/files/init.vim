@@ -16,6 +16,7 @@ set cursorline
 
 " Display line numbers
 set nu
+set numberwidth=5
 
 " Choose indent style based on what the file seems to use
 set smarttab
@@ -32,7 +33,7 @@ set splitbelow
 set splitright
 
 " Use our custom color theme
-colorscheme nyx
+colorscheme malwrar
 
 " Sometimes files use tabs for some reason, this makes that changable with
 " :retab
