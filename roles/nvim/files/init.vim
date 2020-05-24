@@ -49,6 +49,9 @@ set wildmode=longest:full,full
 " ~/.local/share/nvim/undo by default.
 set undofile
 
+" I can handle the truth
+set conceallevel=0
+
 " Save file as root
 cmap w!! w !sudo tee % >/dev/null
 
@@ -118,6 +121,10 @@ Plug 'mhinz/vim-signify'
 
 " Latex stuff
 Plug 'lervag/vimtex'
+
+" Markdown stuff
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax' 
 
 call plug#end()
 
@@ -238,8 +245,13 @@ let g:airline_section_y = ""
 
 """ Vimtex
 " List of default mappings: https://github.com/lervag/vimtex/wiki/usage#default-mappings
-set conceallevel=1
-let g:tex_flavor='latex'
-let g:vimtex_view_method='zathura'
-let g:vimtex_quickfix_mode=0
-let g:tex_conceal='abdmg'
+let g:tex_flavor = 'latex'
+let g:vimtex_view_method = 'zathura'
+let g:vimtex_quickfix_mode = 0
+let g:tex_conceal = 'abdmg'
+
+
+""" vim-pandoc (also the synax one)
+let g:pandoc#modules#disabled = ["folding", "spell"]
+let g:pandoc#formatting#mode = "hA"
+let g:pandoc#formatting#textwidth = 79
