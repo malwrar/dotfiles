@@ -1,16 +1,20 @@
 home_dir: "{{ '~' | expanduser }}"
 colors:
-  black:
+  foreground:
+    rgb: "#c4c0c1"
+  background:
     rgb: "#101010"
-    num: 8
-  dark_grey:
-    rgb: "#232323"
+  black:
+    rgb: "#282828"
     num: 0
+  dark_grey:
+    rgb: "#383838"
+    num: 8
   light_grey:
-    rgb: "#434240"
+    rgb: "#7c7b77"
     num: 7
   white:
-    rgb: "#b3b8b4"
+    rgb: "#bfb8b2"
     num: 15
   red:
     rgb: "#9b9773"
