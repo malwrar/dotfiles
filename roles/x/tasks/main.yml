@@ -21,5 +21,3 @@
   template:
     src: "{{ role_path }}/templates/Xresources"
     dest: "{{ home_dir }}/.Xresources"
-
-
