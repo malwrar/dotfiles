@@ -30,7 +30,7 @@
     state: absent
     path: "{{ nvim_config_dir.path }}/init.vim"
 
-- name: Symlink master init.vim file to the nvim config directory.
+- name: Copy init.vim file to the nvim config directory.
   copy:
     src: "{{ role_path }}/files/init.vim"
     dest: "{{ nvim_config_dir.path }}/init.vim"
@@ -84,7 +84,7 @@
 
 - name: Render our theme template and install it.
   template:
-    src: "{{ role_path }}/templates/malwrar.vim"
+    src: "{{ role_path }}/templates/malwrar_theme.vim"
     dest: "{{ nvim_themes_dir.path }}/malwrar.vim"
 
 # Install theme file
@@ -113,5 +113,5 @@
 
 - name: Render our theme template and install it.
   template:
-    src: "{{ role_path }}/templates/malwrar.vim"
+    src: "{{ role_path }}/templates/malwrar_airline_theme.vim"
     dest: "{{ nvim_airline_themes_dir.path }}/malwrar.vim"

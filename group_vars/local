@@ -11,10 +11,10 @@ colors:
     rgb: "#383838"
     num: 8
   light_grey:
-    rgb: "#7c7b77"
+    rgb: "#6e6e6e"
     num: 7
   white:
-    rgb: "#bfb8b2"
+    rgb: "#8e9295"
     num: 15
   red:
     rgb: "#9b9773"

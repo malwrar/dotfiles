@@ -1,9 +1,9 @@
-" if version > 580
-"     hi clear
-"     if exists("syntax_on")
-"         syntax reset
-"     endif
-" endif
+if version > 580
+    hi clear
+    if exists("syntax_on")
+        syntax reset
+    endif
+endif
 
 let g:colors_name = "malwrar"
 set background=dark
@@ -33,11 +33,12 @@ let s:current_column       = { "bg": s:black }
 let s:line_number          = { "fg": s:black }
 let s:line_number_current  = { "fg": s:black }
 let s:selected             = { "bg": s:black }
-let s:comment              = { "fg": s:dark_grey }
-let s:keywords             = { "fg": s:white }
+let s:comments             = { "fg": s:dark_grey }
+let s:keywords             = { "fg": s:light_grey }
 let s:numbers              = { "fg": s:white }
 let s:strings              = { "fg": s:white }
-let s:comments             = { "fg": s:white }
+let s:debug                = { "fg": s:white }
+let s:error                = { "fg": s:white }
 " 
 " " Default Colors
 call s:h("Normal",                         s:normal)
@@ -63,44 +64,44 @@ call s:h("StatusLineNC",                   s:normal)
 call s:h("VertSplit",                      s:normal)
 
 " Preproc
-call s:h("PreProc",                        s:normal)
+call s:h("PreProc",                        s:keywords)
 hi! link Include                           PreProc
 hi! link Define                            PreProc
 hi! link Macro                             PreProc
 hi! link PreCondit                         PreProc
 
 " Keyword
-call s:h("Statement",                      s:normal) " if for while
+call s:h("Statement",                      s:keywords)
 hi! link Conditonal                        Statement
 hi! link Repeat                            Statement
-call s:h("Label",                          s:normal)
+call s:h("Label",                          s:keywords)
 hi! link Operator                          Statement " {, (, + - *...
 hi! link Keyword                           Statement
 hi! link Exception                         Statement
 
 " Types
-call s:h("Type",                           s:normal) " void bool char int
+call s:h("Type",                           s:keywords) " void bool char int
 hi! link Typedef                           Type
-call s:h("Structure",                      s:normal) " class struct
+call s:h("Structure",                      s:keywords) " class struct
 hi! link StorageClass                      Type
 hi! link Identifier                        Type
 hi! link Function                          Type
 
 " Primitives
-call s:h("Constant",                       s:normal)
-call s:h("Boolean",                        s:normal)
-call s:h("Number",                         s:normal)
-call s:h("Float",                          s:normal)
-call s:h("String",                         s:normal)
+call s:h("Constant",                       s:numbers)
+call s:h("Boolean",                        s:numbers)
+call s:h("Number",                         s:numbers)
+call s:h("Float",                          s:numbers)
+call s:h("String",                         s:strings)
 
 " Specials
-call s:h("Special",                        s:normal) " ({})
+call s:h("Special",                        s:keywords) " ({})
 hi! link SpecialChar                       Special
 hi! link Tag                               Special
 hi! link Delimiter                         Special
 
-call s:h("Debug",                          s:normal)
-call s:h("Error",                          s:normal)
+call s:h("Debug",                          s:debug)
+call s:h("Error",                          s:error)
 
 call s:h("WildMenu",                       s:normal)
 call s:h("ModeMsg",                        s:normal) " CMake commands options
