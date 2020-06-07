@@ -25,8 +25,7 @@
     state: absent
     path: "{{ home_dir }}/.zshrc"
 
-- name: Symlink .zshrc
-  file:
+- name: Copy .zshrc
+  copy:
     src: "{{ role_path }}/files/zshrc"
     dest: "{{ home_dir }}/.zshrc"
-    state: link
