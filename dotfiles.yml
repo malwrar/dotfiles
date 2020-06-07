@@ -11,3 +11,6 @@
     - role: x
       tags:
         - x
+    - role: newsboat
+      tags:
+        - newsboat
