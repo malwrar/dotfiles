@@ -1,0 +1,16 @@
+---
+- name: Check for .inputrc
+  stat:
+    path: "{{ home_dir }}/.inputrc"
+  register: inputrc
+
+- name: Back up .inputrc
+  when: inputrc.stat.exists
+  copy:
+    src: "{{ home_dir }}/.inputrc"
+    dest: "{{ home_dir }}/.inputrc.bak"
+
+- name: Copy .inputrc
+  copy:
+    src: "{{ role_path }}/files/inputrc"
+    dest: "{{ home_dir }}/.inputrc"

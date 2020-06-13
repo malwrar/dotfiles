@@ -1,0 +1,5 @@
+# Shut up, computer
+set bell-style visible
+
+# Use vi-like controls
+set editing-mode vi

@@ -8,7 +8,10 @@
     - role: nvim
       tags:
         - nvim
-    - role: x
+    - role: readline
+      tags:
+        - readline
+    - role: readline
       tags:
         - x
     - role: newsboat
