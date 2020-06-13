@@ -72,6 +72,7 @@ source "$HOME/.zsh_plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 zstyle ':autocomplete:list-choices:*' max-lines 5
 zstyle ':autocomplete:*' magic expand-history  # no auto-correct, only history
 zstyle ':autocomplete:tab:*' completion select  # tab cycles matches
+zstyle ':completion:list-expand:*' extra-verbose false  # less prompt
 
 ## Activate oh my zsh if it's available
 #export ZSH=$HOME/.oh-my-zsh
