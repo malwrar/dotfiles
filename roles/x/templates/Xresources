@@ -44,9 +44,7 @@
 !!!! UNSORTED !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !
 ! Xft settings
-!Xft.dpi:                    276
-!Xft.dpi:                    96
-Xft.dpi:                    192
+Xft.dpi:                    {{ dpi }}
 Xft.autohint:               0
 Xft.lcdfilter:              lcddefault
 Xft.hintstyle:              hintfull
@@ -55,15 +53,14 @@ Xft.antialias:              true
 Xft.rgba:                   rgb
 
 URxvt.depth:                32
-!URxvt.geometry:             90x30
+URxvt.geometry:             90x30
 URxvt.transparent:          false
 URxvt.fading:               0
 URxvt.urgentOnBell:         true
-!URxvt.visualBell:           true
+URxvt.visualBell:           true
 URxvt.loginShell:           true
 URxvt.saveLines:            65535
-!URxvt.internalBorder:       3
-!URxvt.lineSpace:            0
+URxvt.lineSpace:            0
 
 ! Fonts
 URxvt.font:     xft:DejaVuSansMono:pixelsize=12:antialias=true:hinting=true
