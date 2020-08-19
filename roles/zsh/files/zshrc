@@ -76,6 +76,7 @@ zstyle ':completion:list-expand:*' extra-verbose false  # less prompt
 
 # Customize prompt
 PROMPT="%F{black}%* %F{magenta}[%1~] %F{black}> %F{white}"
+PROMPT2="%F{black}%_... %F{white}"
 
 # If I'm at work, use some stuff to work with internal systems.
 if [ -f $HOME/.zshrc.apple ]; then
