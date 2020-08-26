@@ -64,6 +64,11 @@ setopt NO_FLOW_CONTROL
 export GOPATH="${HOME}/.go/"
 path+=("$GOPATH/bin")
 
+# Configure k8s stuff
+alias k=kubectl
+source <(kubectl completion bash)
+complete -F __start_kubectl k
+
 # Activate a few autocomplete plugins that were installed by ansible
 source "$HOME/.zsh_plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
 source "$HOME/.zsh_plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
@@ -79,6 +84,6 @@ PROMPT="%F{black}%* %F{magenta}[%1~] %F{black}> %F{white}"
 PROMPT2="%F{black}%_... %F{white}"
 
 # If I'm at work, use some stuff to work with internal systems.
-if [ -f $HOME/.zshrc.apple ]; then
+if [ -f $HOME/.zshrc.work ]; then
     source $HOME/.zshrc.work
 fi
