@@ -64,6 +64,9 @@ setopt NO_FLOW_CONTROL
 export GOPATH="${HOME}/.go/"
 path+=("$GOPATH/bin")
 
+# Configure rust stuff
+source $HOME/.cargo/env
+
 # Configure k8s stuff
 alias k=kubectl
 source <(kubectl completion bash)
