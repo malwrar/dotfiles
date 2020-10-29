@@ -8,8 +8,8 @@ https://stratechery.com/feed/
 https://citizenlab.ca/feed
 http://feeds.feedburner.com/zerohedge/feed
 https://xkcd.com/atom.xml
-http://lwkd.info/feed.xml
-https://this-week-in-rust.org/rss.xml
+http://lwkd.info/feed.xml project
+https://this-week-in-rust.org/rss.xml project
 http://feeds2.feedburner.com/hackaday/LgoM
 https://secret.club/feed
 https://www.mentalfloss.com/rss.xml
@@ -45,3 +45,5 @@ https://www.eevblog.com/feed electronics teardowns
 https://keenlab.tencent.com/en/atom.xml security research
 https://www.pentestpartners.com/security-blog/feed security news
 https://blog.ret2.io/feed.xml security
+https://blog.torproject.org/feed project
+https://torrentfreak.com/feed
