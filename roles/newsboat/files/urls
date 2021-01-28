@@ -1,3 +1,7 @@
+https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml news
+https://feeds.a.dj.com/rss/RSSWorldNews.xml news
+https://feeds.a.dj.com/rss/RSSOpinion.xml politics opinions
+https://reason.com/feed politics
 https://foreignpolicy.com/feed/ politics
 https://fivethirtyeight.com/politics/feed politics
 https://fivethirtyeight.com/economics/feed economics
@@ -53,3 +57,12 @@ https://torrentfreak.com/feed
 https://blog.ipfs.io/index.xml project
 https://blog.joinmastodon.org/index.xml project
 https://www.pine64.org/blog/feed engineering
+https://putanumonit.com/feed/ rationalism
+https://rationallyspeakingpodcast.libsyn.com/rss rationalism podcast
+https://rationallyspeakingpodcast.libsyn.com/rss rationalism podcast
+https://www.lesswrong.com/feed.xml?view=curated-rss rationalism
+https://razib.substack.com/feed rationalism rationalism
+https://zeynep.substack.com/feed rationalism
+https://taibbi.substack.com/feed rationalism
+https://chesscircuit.substack.com/feed chess
+https://feeds.feedburner.com/marginalrevolution/feed economics

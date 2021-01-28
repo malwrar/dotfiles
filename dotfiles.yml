@@ -4,10 +4,11 @@
   gather_facts: yes
   become: false
   roles:
-    - role: alacritty
-    - role: zsh
-    - role: nvim
-    - role: newsboat
+    - role: lang/rust
+      #- role: alacritty
+      #- role: zsh
+      #- role: nvim
+      #- role: newsboat
   #roles:
   #  - role: zsh
   #    when: (ansible_facts['os_family'] == "Archlinux") or
