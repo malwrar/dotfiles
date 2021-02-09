@@ -1,5 +1,7 @@
 https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml news
 https://feeds.a.dj.com/rss/RSSWorldNews.xml news
+https://feeds.a.dj.com/rss/WSJcomUSBusiness.xml
+https://feeds.a.dj.com/rss/RSSMarketsMain.xml
 https://feeds.a.dj.com/rss/RSSOpinion.xml politics opinions
 https://reason.com/feed politics
 https://foreignpolicy.com/feed/ politics
@@ -7,17 +9,16 @@ https://fivethirtyeight.com/politics/feed politics
 https://fivethirtyeight.com/economics/feed economics
 https://fivethirtyeight.com/science/feed science
 https://www.mydiplomaticlife.com/feed/
-https://slatestarcodex.com/feed
-http://datagenetics.com/feed/rss.xml
+https://datagenetics.com/feed/rss.xml
 https://mcmansionhell.com/rss architecture design funny
 https://www.bloomberg.com/opinion/authors/ARbTQlRLRjE/matthew-s-levine.rss
 https://stratechery.com/feed/
 https://citizenlab.ca/feed
-http://feeds.feedburner.com/zerohedge/feed
+https://feeds.feedburner.com/zerohedge/feed
 https://xkcd.com/atom.xml
-http://lwkd.info/feed.xml project
+https://lwkd.info/feed.xml project
 https://this-week-in-rust.org/rss.xml project
-http://feeds2.feedburner.com/hackaday/LgoM
+https://feeds2.feedburner.com/hackaday/LgoM
 https://secret.club/feed
 https://www.mentalfloss.com/rss.xml
 https://medium.com/feed/airbnb-engineering
@@ -32,22 +33,22 @@ https://engineering.fb.com/feed
 https://medium.com/feed/@Pinterest_Engineering
 https://feeds.feedburner.com/blogspot/gJZg
 https://research.fb.com/feed
-http://www.securityfocus.com/rss/news.xml security news
+https://www.securityfocus.com/rss/news.xml security news
 https://securelist.com/feed/
 https://threatpost.com/feed
 https://aws.amazon.com/blogs/machine-learning/feed
 https://feeds.feedburner.com/AmazonWebServicesBlog
 https://feeds.feedburner.com/CiscoBlogThreatResearch?format=xml security tech
 https://feeds.feedburner.com/GoogleOnlineSecurityBlog security tech
-http://googleprojectzero.blogspot.com/feeds/posts/default?alt=rss security tech
+https://googleprojectzero.blogspot.com/feeds/posts/default?alt=rss security tech
 https://slatestarcodex.com/feed/
 https://mad.science.blog/rss psychology psychadelics drugs
-http://feeds.arstechnica.com/arstechnica/technology-lab technology
-http://feeds.arstechnica.com/arstechnica/science science
+https://feeds.arstechnica.com/arstechnica/technology-lab technology
+https://feeds.arstechnica.com/arstechnica/science science
 https://jvns.ca/atom.xml technology hackers
 https://www.theatlantic.com/feed/all/ american lifestyle culture
 https://thefederalist.com/feed/
-http://feeds.ifixit.com/ifixitorg electronics teardowns
+https://feeds.ifixit.com/ifixitorg electronics teardowns
 https://www.eevblog.com/feed electronics teardowns
 https://keenlab.tencent.com/en/atom.xml security research
 https://www.pentestpartners.com/security-blog/feed security news
@@ -59,10 +60,13 @@ https://blog.joinmastodon.org/index.xml project
 https://www.pine64.org/blog/feed engineering
 https://putanumonit.com/feed/ rationalism
 https://rationallyspeakingpodcast.libsyn.com/rss rationalism podcast
-https://rationallyspeakingpodcast.libsyn.com/rss rationalism podcast
 https://www.lesswrong.com/feed.xml?view=curated-rss rationalism
 https://razib.substack.com/feed rationalism rationalism
 https://zeynep.substack.com/feed rationalism
 https://taibbi.substack.com/feed rationalism
 https://chesscircuit.substack.com/feed chess
 https://feeds.feedburner.com/marginalrevolution/feed economics
+https://astralcodexten.substack.com/ rationalism
+https://www.bunniestudios.com/blog/?feed=rss2
+https://hnrss.org/bestcomments
+https://hnrss.org/frontpage
