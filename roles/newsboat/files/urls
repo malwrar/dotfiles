@@ -71,3 +71,18 @@ https://astralcodexten.substack.com/ rationalism
 https://www.bunniestudios.com/blog/?feed=rss2
 https://hnrss.org/bestcomments
 https://hnrss.org/frontpage
+https://loupventures.com/feed vc
+https://www.eetimes.com/feed ee
+https://riscv.org/news/in-the-news/feed riscv "~RISC-V :: News"
+https://riscv.org/news/announcements/feed riscv "~RISC-V :: Announcements"
+https://riscv.org/news/risc-v-blog/feed riscv "~RISC-V :: Blog"
+https://www.archlinux.org/feeds/news/ "~Arch Linux :: News"
+https://www.gentoo.org/feeds/news.xml "~Gentoo :: News"
+https://security.gentoo.org/subscribe "~Gentoo :: Security"
+https://voidlinux.org/atom.xml "~Void Linux :: News"
+https://www.debian.org/News/news "~Debian :: News"
+https://ubuntu.com/blog/feed "~Ubuntu :: News"
+https://fedoramagazine.org/feed/ "~Fedora :: News"
+https://fosdem.org/2021/news/ events "~FOSDEM :: News"
+https://www.defcon.org/html/links/defconrss.xml events "~DEFCON :: News"
+https://makerfaire.com/feed events "~Maker Faire :: News"
