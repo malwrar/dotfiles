@@ -1,8 +1,8 @@
 https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml news
-https://feeds.a.dj.com/rss/RSSWorldNews.xml news
-https://feeds.a.dj.com/rss/WSJcomUSBusiness.xml
-https://feeds.a.dj.com/rss/RSSMarketsMain.xml
-https://feeds.a.dj.com/rss/RSSOpinion.xml politics opinions
+https://feeds.a.dj.com/rss/RSSWorldNews.xml news "~WSJ :: World News"
+https://feeds.a.dj.com/rss/WSJcomUSBusiness.xml "~WSJ :: US Business"
+https://feeds.a.dj.com/rss/RSSMarketsMain.xml "~WSJ :: Markets"
+https://feeds.a.dj.com/rss/RSSOpinion.xml politics opinions "~WSJ :: Opinions"
 https://reason.com/feed politics
 https://foreignpolicy.com/feed/ politics
 https://fivethirtyeight.com/politics/feed politics
@@ -25,7 +25,7 @@ https://www.mentalfloss.com/rss.xml
 https://medium.com/feed/airbnb-engineering
 https://eng.uber.com/feed
 https://eng.lyft.com/feed
-https://hacks.mozilla.org/
+https://hacks.mozilla.org/feed
 https://netflixtechblog.com/feed
 https://blog.twitter.com/engineering/en_us/blog.rss
 https://blog.cloudflare.com/rss/
@@ -44,12 +44,12 @@ https://feeds.feedburner.com/GoogleOnlineSecurityBlog security tech
 https://googleprojectzero.blogspot.com/feeds/posts/default?alt=rss security tech
 https://slatestarcodex.com/feed/
 https://mad.science.blog/rss psychology psychadelics drugs
-https://feeds.arstechnica.com/arstechnica/technology-lab technology
-https://feeds.arstechnica.com/arstechnica/science science
+http://feeds.arstechnica.com/arstechnica/technology-lab technology
+http://feeds.arstechnica.com/arstechnica/science science
 https://jvns.ca/atom.xml technology hackers
 https://www.theatlantic.com/feed/all/ american lifestyle culture
 https://thefederalist.com/feed/
-https://feeds.ifixit.com/ifixitorg electronics teardowns
+http://feeds.ifixit.com/ifixitorg electronics teardowns
 https://www.eevblog.com/feed electronics teardowns
 https://keenlab.tencent.com/en/atom.xml security research
 https://www.pentestpartners.com/security-blog/feed security news
@@ -67,7 +67,7 @@ https://zeynep.substack.com/feed rationalism
 https://taibbi.substack.com/feed rationalism
 https://chesscircuit.substack.com/feed chess
 https://feeds.feedburner.com/marginalrevolution/feed economics
-https://astralcodexten.substack.com/ rationalism
+https://astralcodexten.substack.com/feed rationalism
 https://www.bunniestudios.com/blog/?feed=rss2
 https://hnrss.org/bestcomments
 https://hnrss.org/frontpage
