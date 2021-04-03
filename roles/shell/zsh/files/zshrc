@@ -72,16 +72,6 @@ alias k=kubectl
 source <(kubectl completion bash)
 complete -F __start_kubectl k
 
-# Activate a few autocomplete plugins that were installed by ansible
-source "$HOME/.zsh_plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
-source "$HOME/.zsh_plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-
-# Configue zsh-autocomplete
-zstyle ':autocomplete:list-choices:*' max-lines 5
-zstyle ':autocomplete:*' magic expand-history  # no auto-correct, only history
-zstyle ':autocomplete:tab:*' completion select  # tab cycles matches
-zstyle ':completion:list-expand:*' extra-verbose false  # less prompt
-
 # Customize prompt
 PROMPT="%F{black}%* %F{magenta}[%1~] %F{black}> %F{white}"
 PROMPT2="%F{black}%_... %F{white}"
