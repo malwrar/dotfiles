@@ -66,6 +66,7 @@ path+=("$GOPATH/bin")
 
 # Configure rust stuff
 source $HOME/.cargo/env
+source $HOME/.cargo/bin
 
 # Configure k8s stuff
 alias k=kubectl
