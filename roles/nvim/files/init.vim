@@ -1,258 +1,302 @@
-" What is this 'Vee-Eye' of which you speak
-set nocompatible
+" Modular neovim config by malwrar
 
-" Makes it so switching buffers will not require you to save changes
-set hidden
-
-" neovim/neovim#3702
-set mouse=
-
-" Don't change the cursor style
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
-set guicursor=
-
-" Highlight current line.
-set cursorline
-
-" Display line numbers
-set nu
-set numberwidth=5
-
-" Choose indent style based on what the file seems to use
-set smarttab
-set smartindent
-set autoindent
-set copyindent
-
-" Bigger safety net
-set history=1000
-set undolevels=1000
-
-" Make splits feel more natural
-set splitbelow
-set splitright
-
-" Use our custom color theme
+" TODO: use custom theme
 colorscheme malwrar
 
-" Sometimes files use tabs for some reason, this makes that changable with
-" :retab
-set expandtab ts=4 sw=4
+" Respond to mouse interactions
+set mouse=a
 
-" Visually display tab characters and trailing spaces
-set list listchars=tab:▸\ ,trail:.
+" Show line numbers
+set number
 
-" Sexy menu tab completion
-set wildmenu
-set wildmode=longest:full,full
+" Set leader keys
+let g:mapleader = "\<Space>"
+let g:maplocalleader = ','
 
-" Store undo history after exiting.  Neovim will put undofiles in
-" ~/.local/share/nvim/undo by default.
-set undofile
+" Reduce timeout from 1000 to 500 to make whichkey menu more responsive
+set timeoutlen=500
 
-" I can handle the truth
-set conceallevel=0
+" Reduce time it takes for CursorHold to trigger
+set updatetime=500
 
-" Save file as root
-cmap w!! w !sudo tee % >/dev/null
+" Set default text preferences
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set textwidth=80
+set smartcase
+set smartindent
+set smarttab
 
-" Make space the leader key
-let mapleader=" "
-let maplocalleader=" "
-nnoremap <SPACE> <Nop>
+" Start by specifying plugins
+call plug#begin(stdpath('data') . '/plugged')
 
-" Make arrow keys adjust split sizes
-nnoremap <buffer> <silent> <up> :wincmd +<CR>
-nnoremap <buffer> <silent> <down> :wincmd -<CR>
-nnoremap <buffer> <silent> <left> :wincmd <<CR>
-nnoremap <buffer> <silent> <right> :wincmd ><CR>
+" Replace the default neovim front page.
+Plug 'mhinz/vim-startify'
 
-" Escape terminal mode by pressing escape
-tnoremap <Esc> <C-\><C-n>
+" Language server stuff
+Plug 'neovim/nvim-lspconfig'
+Plug 'kabouzeid/nvim-lspinstall'
+Plug 'simrat39/rust-tools.nvim'
 
-" Add a bind to set relative numbers
-nnoremap <leader>r :set rnu!"<CR>
+" Autocompletion popup which sources from language servers
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete-lsp'
+Plug 'ncm2/float-preview.nvim'
 
-" Ignore line indenting and etc, useful for pasting
-set pastetoggle=<F2>
+" Pretty visual tool for finding stuff
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
-" Clears search highlighting
-nmap <silent> <leader>/ :nohlsearch<CR>
-
-" Install plugins
-call plug#begin('~/.local/share/nvim/plugins')
-
-" Shougo requires a weird install process for a few of their plugins, combined them together here
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'Shougo/defx.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-
-" Snippet support
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
-
-" Recognize terraform files
-Plug 'hashivim/vim-terraform'
-
-" Fancy status bar
-Plug 'vim-airline/vim-airline'
-
-" Intellisense in vim??
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" File tree explorer + an integration to show changed git-tracked files
-Plug 'scrooloose/nerdtree'
+" File tree
+Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'PhilRunninger/nerdtree-visual-selection'
 
-" Helm/Unite-like plugin
-Plug 'Shougo/denite.nvim'
+" Pops up a little shortcut helper prompt like in spacemacs
+Plug 'liuchengxu/vim-which-key'
 
-" Allows you to quickly edit surrounding characters
-Plug 'tpope/vim-surround'
-
-" Git plugins
-Plug 'tpope/vim-fugitive'
-Plug 'mhinz/vim-signify'
-
-" Latex stuff
-Plug 'lervag/vimtex'
-
-" Markdown stuff
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax' 
+" Use fancy icons (if installed) for several plugins
+Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-web-devicons'
 
 call plug#end()
 
 
-""" NERDTree
-" Bind to open nerd tree
-nmap <silent> <leader>n :NERDTreeToggle<CR>
 
-" Arrow character in browser
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
+" TODO: set up:
+"   * Filetype-specific stuff (2 spaces for yaml, json, etc)
+"   * Snippets
+"   * Ansible snippets?
+" 
+" After that, ansible autoinstall + splitting config files. no need to do that tho, just finish up the above then work on understanding rendy + getting it working with xcb
 
-" If we delete a file in NERDTree, also delete any open buffers containing it
-let NERDTreeAutoDeleteBuffer = 1
+set completeopt-=preview
+let g:deoplete#enable_at_startup = 1
+let g:float_preview#docked = 0
+let g:float_preview#max_width = 80
 
-" Make the UI a little cleaner
-"let NERDTreeMinimalUI = 1
-
-" Close vim if the only window left is NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" Quit NERDTree after we use it to open a file
-let g:NERDTreeQuitOnOpen = 1
-
-
-""" Signify
-" I only really care about git
-let g:signify_vcs_list = [ 'git' ]
-
-" Customize signs to use
-let g:signify_sign_add               = '+'
-let g:signify_sign_delete            = '-'
-let g:signify_sign_delete_first_line = '‾'
-let g:signify_sign_change            = '~'
-let g:signify_sign_changedelete      = g:signify_sign_change
-
-" Don't tell me how many lines were deleted (reduces sign column width)
-let g:signify_sign_show_count = 0
-
-" Only show colors
-"let g:signify_sign_show_text = 0
-
-""" coc.nvim
-nmap <silent> <leader>dd <Plug>(coc-definition)
-nmap <silent> <leader>dr <Plug>(coc-references)
-nmap <silent> <leader>dj <Plug>(coc-implementation)
-
-" Use the tab key to select completion candidates.  For the tab binding, we also
-" add in a neat check that ensures we also use Tab to expand snippets
-function! s:check_back_space() abort "{{{
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}
-
-imap <silent><expr> <TAB>
-  \ pumvisible() ? "\<C-n>" :
-  \ neosnippet#expandable_or_jumpable() ?
-  \    "\<Plug>(neosnippet_expand_or_jump)" :
-  \ <SID>check_back_space() ? "\<TAB>" :
-  \ coc#refresh()
-
-imap <silent><expr> <S-TAB>
-  \ pumvisible() ? "\<C-p>" :
-  \ <SID>check_back_space() ? "\<TAB>" :
-  \ coc#refresh()
-
-" Use the enter key to confirm a completion candidate selection.  If the
-" candidate is a snippet, we'll expand it.  If it's an ordinary item, we can
-" just close the PUM since it'll have already expanded.  Otherwise, the PUM
-" isn't open or we haven't selected an item and should just press enter.
-imap <silent><expr> <CR>
-  \ pumvisible() && !empty(v:completed_item) ?
-  \ neosnippet#expandable_or_jumpable() && split(v:completed_item.menu . " a")[0] == "[ns]" ?
-  \ "\<Plug>(neosnippet_expand_or_jump)" :
-  \ coc#_select_confirm() :
-  \ "<CR>"
-
-
-""" Denite
-" Key binding
-nmap <silent> <leader><space> :Denite buffer file/rec<CR>
-nmap <silent> <leader>b :Denite buffer -split=floating -winrow=1<CR>
-nmap <silent> <leader>f :Denite file/rec<CR>
-nmap <silent> <leader>g :Denite grep:::!<CR>
-
-" Define mappings
-autocmd FileType denite call s:denite_my_settings()
-function! s:denite_my_settings() abort
-  nnoremap <silent><buffer><expr> <CR>
-  \ denite#do_map('do_action')
-  nnoremap <silent><buffer><expr> d
-  \ denite#do_map('do_action', 'delete')
-  nnoremap <silent><buffer><expr> p
-  \ denite#do_map('do_action', 'preview')
-  nnoremap <silent><buffer><expr> q
-  \ denite#do_map('quit')
-  nnoremap <silent><buffer><expr> i
-  \ denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> <Space>
-  \ denite#do_map('toggle_select').'j'
+" Configure floating preview window
+function! DisableExtras()
+  call nvim_win_set_option(g:float_preview#win, 'number', v:false)
+  call nvim_win_set_option(g:float_preview#win, 'relativenumber', v:false)
+  call nvim_win_set_option(g:float_preview#win, 'cursorline', v:false)
 endfunction
 
-" Ignore anything matching these
-if exists('denite')  " Prevent error if denite isn't installed
-    call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
-        \ [ '.git/', '.ropeproject/', '__pycache__/',
-        \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/'])
-endif
+autocmd User FloatPreviewWinOpen call DisableExtras()
 
+" Register space (leader) as which_key trigger
+call which_key#register('<Space>', "g:which_key_map")
+nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 
-""" Airline
-let g:airline_theme="nyx"
-let g:airline_extensions = ['coc']
-let g:airline_exclude_preview = 1
-let g:airline_section_x = ""
-let g:airline_section_y = ""
+" Use which_key for leader-based shortcuts.
+let g:which_key_map = {}
 
+" Don't show statusbar in which_key buffer
+ autocmd! FileType which_key
+ autocmd  FileType which_key set laststatus=0 noshowmode noruler
+   \ | autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
-""" Vimtex
-" List of default mappings: https://github.com/lervag/vimtex/wiki/usage#default-mappings
-let g:tex_flavor = 'latex'
-let g:vimtex_view_method = 'zathura'
-let g:vimtex_quickfix_mode = 0
-let g:tex_conceal = 'abdmg'
+let g:which_key_map.t = {
+  \   'name' : '+toggle',
+  \   't' : ['NERDTreeToggle', 'tree'],
+  \ }
 
+let g:which_key_map.f = {
+  \   'name' : '+find',
+  \   't' : [':Telescope live_grep',                'text'],
+  \   'f' : [':Telescope find_files',               'file'],
+  \   'b' : [':Telescope buffers',                  'buffer'],
+  \   'm' : [':Telescope marks',                    'marks'],
+  \   'M' : [':Telescope map_pages',                'man-page'],
+  \   'r' : [':Telescope lsp_references',           'lsp-references'],
+  \   's' : [':Telescope lsp_document_symbols',     'lsp-symbols'],
+  \   'e' : [':Telescope lsp_document_diagnostics', 'lsp-errors'],
+  \ }
 
-""" vim-pandoc (also the synax one)
-let g:pandoc#modules#disabled = ["folding", "spell"]
-let g:pandoc#formatting#mode = "hA"
-let g:pandoc#formatting#textwidth = 79
+"let g:which_key_map.s = {
+"  \   'name' : '+session',
+"  \   's' : ['SessionSave',     'save'],
+"  \   'l' : ['SessionLoad',     'load'],
+"  \ }
+
+" Put NERDTree on the right side, not left
+let g:NERDTreeWinPos = "right"
+
+" Start NERDTree and put the cursor back in the other window.
+autocmd VimEnter * NERDTree | wincmd p
+
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
+
+" Open the existing NERDTree on each new tab.
+autocmd TabEnter * NERDTreeMirror
+
+let g:NERDTreeGitStatusUseNerdFonts = 1
+let g:NERDTreeGitStatusConcealBrackets = 1
+
+" Configure telescope
+lua << EOF
+require('telescope').setup{
+  defaults = {
+    vimgrep_arguments = {
+      'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case'
+    },
+    prompt_position = "bottom",
+    prompt_prefix = "> ",
+    selection_caret = "> ",
+    entry_prefix = "  ",
+    initial_mode = "insert",
+    selection_strategy = "reset",
+    sorting_strategy = "descending",
+    layout_strategy = "horizontal",
+    layout_defaults = {
+      horizontal = {
+        mirror = false,
+      },
+      vertical = {
+        mirror = false,
+      },
+    },
+    file_sorter =  require'telescope.sorters'.get_fuzzy_file,
+    file_ignore_patterns = {},
+    generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
+    shorten_path = true,
+    winblend = 0,
+    width = 0.75,
+    preview_cutoff = 120,
+    results_height = 1,
+    results_width = 0.8,
+    border = {},
+    borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+    color_devicons = true,
+    use_less = true,
+    set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
+    file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
+    grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
+    qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
+
+    -- Developer configurations: Not meant for general override
+    buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
+  }
+}
+EOF
+
+" Configure nvim-lspconfig
+lua << EOF
+local nvim_lsp = require('lspconfig')
+
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  local opts = { noremap=true, silent=true }
+  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+
+  -- Set some keybinds conditional on server capabilities
+  if client.resolved_capabilities.document_formatting then
+    buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  end
+  if client.resolved_capabilities.document_range_formatting then
+    buf_set_keymap("v", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+  end
+
+  -- Set autocommands conditional on server_capabilities
+  if client.resolved_capabilities.document_highlight then
+    vim.api.nvim_exec([[
+      hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
+      hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
+      hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
+      augroup lsp_document_highlight
+        autocmd! * <buffer>
+        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+      augroup END
+    ]], false)
+  end
+
+  -- Configure diagnostics visualization
+  vim.lsp.handlers["textdocument/publishdiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+      -- Enable underlines
+      underline = true,
+      -- Enable symbols in sign column
+      sign = true,
+      -- Keep updating while we're writing stuff
+      update_in_insert = true,
+      -- But for the love of god remove that eyesore warning text
+      virtual_text = false,
+    }
+  )
+
+end
+
+-- Use a loop to conveniently both setup defined servers 
+-- and map buffer local keybindings when the language server attaches
+require'lspinstall'.setup() -- important
+
+local servers = require'lspinstall'.installed_servers()
+for _, server in pairs(servers) do
+  require'lspconfig'[server].setup{}
+end
+
+-- Ensure annoying diagnostics are disabled
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = false,
+    underline = false,
+    signs = true,
+    update_in_insert = true,
+  }
+)
+EOF
+
+" Use the language server to replace a few stock operations.
+nnoremap <silent>gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent><c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent>K     <cmd>lua vim.lsp.buf.hover()<CR>
+
+" TODO: move to theme
+sign define LspDiagnosticsSignError text=E texthl=LspDiagnosticsSignError linehl= numhl=
+sign define LspDiagnosticsSignWarning text=W texthl=LspDiagnosticsSignWarning linehl= numhl=
+sign define LspDiagnosticsSignInformation text=I texthl=LspDiagnosticsSignInformation linehl= numhl=
+sign define LspDiagnosticsSignHint text=H texthl=LspDiagnosticsSignHint linehl= numhl=
+
+hi! link LspDiagnosticsDefaultError Red
+hi! link LspDiagnosticsDefaultWarning Yellow
+hi! link LspDiagnosticsDefaultInformation Blue
+hi! link LspDiagnosticsDefaultHint Aqua
+
+autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()

@@ -8,7 +8,7 @@
     #- role: alacritty
     - role: shell/zsh
     - role: shell/tmux
-    #- role: nvim
+    - role: nvim
     #- role: newsboat
   #roles:
   #  - role: zsh

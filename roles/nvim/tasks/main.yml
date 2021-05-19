@@ -12,106 +12,36 @@
     recurse: yes
   register: nvim_config_dir
 
-# Install init.vim
-- name: Check for existing init.vim file.
-  stat:
-    path: "{{ nvim_config_dir.path }}/init.vim"
-  register: init_vim
-
-- name: Back up existing init.vim file.
-  when: init_vim.stat.exists
-  copy:
-    src: "{{ nvim_config_dir.path }}/init.vim"
-    dest: "{{ nvim_config_dir.path }}/init.vim.bak"
-
-- name: Remove existing init.vim file.
-  when: init_vim.stat.exists
+- name: Symlink init.vim file to the nvim config directory.
   file:
-    state: absent
-    path: "{{ nvim_config_dir.path }}/init.vim"
-
-- name: Copy init.vim file to the nvim config directory.
-  copy:
     src: "{{ role_path }}/files/init.vim"
     dest: "{{ nvim_config_dir.path }}/init.vim"
+    state: link
 
-# Install coc-settings.json
-- name: Check for existing coc-settings.json file.
-  stat:
-    path: "{{ nvim_config_dir.path }}/coc-settings.json"
-  register: coc_settings_json
-
-- name: Back up existing coc-settings.json file.
-  when: coc_settings_json.stat.exists
-  copy:
-    src: "{{ nvim_config_dir.path }}/coc-settings.json"
-    dest: "{{ nvim_config_dir.path }}/coc-settings.json.bak"
-
-- name: Remove existing coc-settings.json file.
-  when: coc_settings_json.stat.exists
+# Install nvim theme file
+- name: Create nvim theme directory
   file:
-    state: absent
-    path: "{{ nvim_config_dir.path }}/coc-settings.json"
-
-- name: Copy master coc-settings.json file to the nvim config directory.
-  copy:
-    src: "{{ role_path }}/files/coc-settings.json"
-    dest: "{{ nvim_config_dir.path }}/coc-settings.json"
-
-# Install theme file
-- name: Create theme directory
-  file:
-    path: "{{ home_dir }}/.config/nvim/colors"
+    path: "{{ nvim_config_dir.path }}/colors"
     state: directory
   register: nvim_themes_dir
 
-- name: Check for existing theme file.
-  stat:
-    path: "{{ nvim_themes_dir.path }}/malwrar.vim"
-  register: theme_file
-
-- name: Back up existing theme file.
-  when: theme_file.stat.exists
-  copy:
-    src: "{{ nvim_themes_dir.path }}/malwrar.vim"
-    dest: "{{ nvim_themes_dir.path }}/malwrar.vim.bak"
-
-- name: Remove existing theme file.
-  when: theme_file.stat.exists
-  file:
-    state: absent
-    path: "{{ nvim_themes_dir.path }}/malwrar.vim"
-
-- name: Render our theme template and install it.
+- name: Render main theme template and install it.
   template:
-    src: "{{ role_path }}/templates/malwrar_theme.vim"
+    src: "{{ role_path }}/templates/main_theme.vim"
     dest: "{{ nvim_themes_dir.path }}/malwrar.vim"
 
-# Install theme file
-- name: Create theme directory
+# Install airline theme file
+- name: Create airline theme directory
   file:
-    path: "{{ home_dir }}/.config/nvim/autoload/airline/themes"
+    path: "{{ nvim_config_dir.path }}/autoload/airline/themes"
     state: directory
   register: nvim_airline_themes_dir
 
-- name: Check for existing theme file.
-  stat:
-    path: "{{ nvim_airline_themes_dir.path }}/malwrar.vim"
-  register: airline_theme_file
-
-- name: Back up existing theme file.
-  when: airline_theme_file.stat.exists
-  copy:
-    src: "{{ nvim_airline_themes_dir.path }}/malwrar.vim"
-    dest: "{{ nvim_airline_themes_dir.path }}/malwrar.vim.bak"
-
-- name: Remove existing theme file.
-  when: airline_theme_file.stat.exists
-  file:
-    state: absent
-    path: "{{ nvim_airline_themes_dir.path }}/malwrar.vim"
-
-- name: Render our theme template and install it.
+- name: Render airline theme template and install it.
   template:
-    src: "{{ role_path }}/templates/malwrar_airline_theme.vim"
+    src: "{{ role_path }}/templates/airline_theme.vim"
     dest: "{{ nvim_airline_themes_dir.path }}/malwrar.vim"
+
+# Install plugins
+- name: Install plugins 
+  shell: "nvim +PlugInstall +PlugUpdate +PlugClean! +qall > /dev/null"
