@@ -87,3 +87,13 @@ https://fosdem.org/2021/news/ events "~FOSDEM :: News"
 https://www.defcon.org/html/links/defconrss.xml events "~DEFCON :: News"
 https://makerfaire.com/feed events "~Maker Faire :: News"
 https://lobste.rs/rss technology
+https://github.com/neovim/neovim/releases.atom projects
+http://0pointer.net/blog/index.rss20 blog
+https://news.mit.edu/rss/feed
+https://news.mit.edu/rss/research research
+https://go.indiegogo.com/feed crowdsourcing
+http://kicktracker.inaimathi.com/staff-picks crowdsourcing
+http://googleaiblog.blogspot.com/atom.xml technology research ai
+https://blog.google/rss technology corp news
+https://about.fb.com/news/feed/ technology corp news
+https://engineering.fb.com/feed/ technology research
