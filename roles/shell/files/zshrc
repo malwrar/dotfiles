@@ -5,6 +5,13 @@ path+=("$HOME/bin" "$HOME/.local/bin")
 PROMPT="%F{black}%* %F{magenta}[%1~] %F{black}> %F{white}"
 PROMPT2="%F{black}%_... %F{white}"
 
+# Ever notice how, when a task requires using a terminal, it usually ends with
+# several random terminals sprawled across a window? Solution: pair each
+# terminal window with a tmux session, that way we can make use of tmux windows
+# (tabs) and panes (splits) to organize things. If this is undesired for any
+# reason, you can always exit to get a regular shell.
+if hash tmux 2>/dev/null && [ "$TMUX" = "" ]; then tmux new; fi
+
 # Use vi mode
 bindkey -v
 
