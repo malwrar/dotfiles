@@ -34,17 +34,25 @@ call plug#begin(stdpath('data') . '/plugged')
 " Replace the default neovim front page.
 Plug 'mhinz/vim-startify'
 
-" Language server stuff
+" Autocompletion popup
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+if !has('nvim')
+  Plugin 'roxma/nvim-yarp'
+  Plugin 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'ncm2/float-preview.nvim'
+
+" Language server stuff + autocomplete
 Plug 'neovim/nvim-lspconfig'
 Plug 'kabouzeid/nvim-lspinstall'
 Plug 'simrat39/rust-tools.nvim'
-
-" Autocompletion popup which sources from language servers
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/deoplete-lsp'
-Plug 'ncm2/float-preview.nvim'
 
-" Pretty visual tool for finding stuff
+" Snippets + autocomplete
+Plugin 'Shougo/neosnippet.vim'
+Plugin 'Shougo/neosnippet-snippets'
+
+" Pretty visual tool for finding stuff, powers most of the <leader>f features
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
