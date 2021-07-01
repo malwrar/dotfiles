@@ -1,6 +1,34 @@
 # Make sure path includes our local bin directory
 path+=("$HOME/bin" "$HOME/.local/bin")
 
+# If I'm on macos and have coreutils installed, use those.
+if hash gdate 2>/dev/null; then
+    alias date="gdate"  # nanosecond precision
+fi
+
+# Calculate stats about how fast the previous command ran.
+PREVCMD_START_SEC=""
+PREVCMD_START_NSEC=""
+preexec () { 
+    PREVCMD_START_SEC="$(date +%s)"
+    PREVCMD_START_NSEC="$(date +%N)"
+}
+
+# If there are stats for a previous command, display them before showing the
+# prompt again.
+precmd() {
+    if [ -z "$PREVCMD_START_SEC" ] || [ -z "$PREVCMD_START_NSEC" ]; then
+        return
+    fi
+
+    DIFF_SEC=$(($(date +%s) - $PREVCMD_START_SEC))
+    DIFF_NSEC=$(($(date +%N) - $PREVCMD_START_NSEC))
+
+    print ""
+    print "^ ${DIFF_SEC}s, ${DIFF_NSEC}ns"
+    #printf "\n^ time taken: ${DIFF_SEC}s, ${DIFFNSEC}ns"
+}
+
 # Customize prompt
 PROMPT="%F{black}%* %F{magenta}[%1~] %F{black}> %F{white}"
 PROMPT2="%F{black}%_... %F{white}"
@@ -72,6 +100,9 @@ unset SSH_ASKPASS
 # Disables ctrl-s (dumb feature that "pauses" screen)
 setopt NO_FLOW_CONTROL
 
+autoload -Uz compinit
+compinit
+
 # Configure golang stuff
 export GOPATH="${HOME}/.go/"
 path+=("$GOPATH/bin")
@@ -82,11 +113,12 @@ source $HOME/.cargo/bin
 
 # Configure k8s stuff
 if hash kubectl 2>/dev/null; then
-    alias k=kubectl
+    alias k="kubectl"
     source <(kubectl completion zsh)
+    complete -F __start_kubectl k
 fi
 
 # If I'm at work, use some stuff to work with internal systems.
-if [ -f $HOME/.zshrc.work ]; then
-    source $HOME/.zshrc.work
+if [ -f "$HOME/.zshrc.work" ]; then
+    source "$HOME/.zshrc.work"
 fi
