@@ -5,6 +5,12 @@
 #     when: ansible_os_family == 'Archlinux'
 
 # TODO: correct config installation directory should be selected based on OS and set by installer subtask
+
+# TODO: install nvim from src?
+# TODO: install Plug https://github.com/junegunn/vim-plug
+# TODO: install nerdfont
+# TODO: install build essentials, tho somewhere else (brew install cmake autoconf automake libtool)
+# TODO: install python providers: https://neovim.io/doc/user/provider.html  (since we have lang installation roles, we can count python as an expected prereq and just run it raw from this role)
 - name: Create config directory
   file:
     path: "{{ home_dir }}/.config/nvim"
@@ -41,6 +47,10 @@
   template:
     src: "{{ role_path }}/templates/airline_theme.vim"
     dest: "{{ nvim_airline_themes_dir.path }}/malwrar.vim"
+
+#- name: Install plugin manager
+#  shell: 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+#       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 # Install plugins
 - name: Install plugins 
