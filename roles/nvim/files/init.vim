@@ -37,8 +37,8 @@ Plug 'mhinz/vim-startify'
 " Autocompletion popup
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 if !has('nvim')
-  Plugin 'roxma/nvim-yarp'
-  Plugin 'roxma/vim-hug-neovim-rpc'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
 endif
 Plug 'ncm2/float-preview.nvim'
 
@@ -49,8 +49,8 @@ Plug 'simrat39/rust-tools.nvim'
 Plug 'Shougo/deoplete-lsp'
 
 " Snippets + autocomplete
-Plugin 'Shougo/neosnippet.vim'
-Plugin 'Shougo/neosnippet-snippets'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
 
 " Pretty visual tool for finding stuff, powers most of the <leader>f features
 Plug 'nvim-lua/popup.nvim'
@@ -104,9 +104,9 @@ nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 let g:which_key_map = {}
 
 " Don't show statusbar in which_key buffer
- autocmd! FileType which_key
- autocmd  FileType which_key set laststatus=0 noshowmode noruler
-   \ | autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+autocmd! FileType which_key
+autocmd  FileType which_key set laststatus=0 noshowmode noruler
+  \ | autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
 let g:which_key_map.t = {
   \   'name' : '+toggle',
@@ -164,7 +164,6 @@ require('telescope').setup{
       '--column',
       '--smart-case'
     },
-    prompt_position = "bottom",
     prompt_prefix = "> ",
     selection_caret = "> ",
     entry_prefix = "  ",
@@ -172,7 +171,7 @@ require('telescope').setup{
     selection_strategy = "reset",
     sorting_strategy = "descending",
     layout_strategy = "horizontal",
-    layout_defaults = {
+    layout_config = {
       horizontal = {
         mirror = false,
       },
@@ -183,16 +182,12 @@ require('telescope').setup{
     file_sorter =  require'telescope.sorters'.get_fuzzy_file,
     file_ignore_patterns = {},
     generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
-    shorten_path = true,
     winblend = 0,
-    width = 0.75,
-    preview_cutoff = 120,
-    results_height = 1,
-    results_width = 0.8,
     border = {},
     borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
     color_devicons = true,
     use_less = true,
+    path_display = {},
     set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
     file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
     grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
