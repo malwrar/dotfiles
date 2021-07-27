@@ -24,8 +24,8 @@ precmd() {
     DIFF_SEC=$(($(date +%s) - $PREVCMD_START_SEC))
     DIFF_NSEC=$(($(date +%N) - $PREVCMD_START_NSEC))
 
-    print ""
-    print "^ ${DIFF_SEC}s, ${DIFF_NSEC}ns"
+    #print ""
+    #print "^ ${DIFF_SEC}s, ${DIFF_NSEC}ns"
     #printf "\n^ time taken: ${DIFF_SEC}s, ${DIFFNSEC}ns"
 }
 
