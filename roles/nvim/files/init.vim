@@ -34,15 +34,23 @@ call plug#begin(stdpath('data') . '/plugged')
 " Replace the default neovim front page.
 Plug 'mhinz/vim-startify'
 
-" Language server stuff
+" Autocompletion popup
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete-lsp'
+if !has('nvim')
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'ncm2/float-preview.nvim'
+
+" Language server stuff + autocomplete
 Plug 'neovim/nvim-lspconfig'
 Plug 'kabouzeid/nvim-lspinstall'
 Plug 'simrat39/rust-tools.nvim'
 
-" Autocompletion popup which sources from language servers
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/deoplete-lsp'
-Plug 'ncm2/float-preview.nvim'
+" Snippets + autocomplete
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
 
 " Pretty visual tool for finding stuff
 Plug 'nvim-lua/popup.nvim'
@@ -103,9 +111,9 @@ nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 let g:which_key_map = {}
 
 " Don't show statusbar in which_key buffer
- autocmd! FileType which_key
- autocmd  FileType which_key set laststatus=0 noshowmode noruler
-   \ | autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+autocmd! FileType which_key
+autocmd  FileType which_key set laststatus=0 noshowmode noruler
+  \ | autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
 let g:which_key_map.t = {
   \   'name' : '+toggle',
