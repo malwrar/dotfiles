@@ -1,9 +1,0 @@
----
-- name: "lang/rust :: Install rust via rustup."
-  shell: 
-    warn: false
-    cmd: "curl https://sh.rustup.rs -sSf | sh -s -- -y"
-    creates: "{{ home_dir }}/.cargo"
-- name: "lang/rust :: Update via rustup."
-  shell: 
-    cmd: "{{ home_dir }}/.cargo/bin/rustup update"
